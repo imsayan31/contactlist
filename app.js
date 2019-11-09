@@ -9,6 +9,22 @@ var app = express();
 
 const route = require('./routes/route');
 
+/* Connection to DB */
+mongoose.connect('mongodb://localhost:27017/contactlist', {useNewUrlParser: true });
+
+
+/* Successfull Connection */
+mongoose.connection.on('connected', () => {
+    console.log('Successfully connected to MongoDB');
+});
+
+/* Failed Connection */
+mongoose.connection.on('error', (err) => {
+    if(err){
+        console.log(`MongoDB connection error: ${err}`);
+    }
+});
+
 //port number
 const port = 3000;
 
@@ -17,6 +33,9 @@ app.use(cors());
 
 //body - parser
 app.use(bodyparser.json());
+
+//static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 //route
 app.use('/api', route);
