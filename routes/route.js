@@ -31,18 +31,17 @@ router.post('/contact', (req, res, next) => {
 });
 
 /* Deleting Contact */
-router.delete('/contact:id', (req, res, next) => {
+router.delete('/contact/:id', (req, res, next) => {
+
     /* Logic to delete contact */
-    Contact.remove({_id: req.param.id}, function(err, result){
+    Contact.remove({_id: req.params.id}, function(err, result){
         if(err){
             res.json(err);
         } else{
             res.json(result);
         }
     });
+    
 });
-
-
-/* Deleting Contact */
 
 module.exports = router;

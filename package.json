@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/imsayan31/contactlist#readme",
   "dependencies": {
+    "@angular/cli": "^8.3.18",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
